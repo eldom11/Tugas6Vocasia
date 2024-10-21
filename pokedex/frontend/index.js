@@ -16,6 +16,40 @@ async function fetchPokemon() {
   }
 }
 
+function Navbar() {
+  return React.createElement(
+    "nav",
+    { className: "fixed top-0 bg-teal-800 p-4 flex justify-between items-center shadow-lg w-full bg-opacity-90" },
+    React.createElement(
+      "div",
+      { className: "flex items-center ml-7" },
+      React.createElement(
+        "img",
+        { src: "https://fontmeme.com/permalink/241021/001e4420f2db665974c631fed06d5d4c.png", alt: "logo", className: "h-10 mr-3" }
+      ),
+    ),
+    React.createElement(
+      "div",
+      { className: "flex space-x-4 mr-0  w-1/2 sm:w-1/3 sm:mr-20 justify-around " },
+      React.createElement(
+        "a",
+        { href: "#root", className: "text-white hover:text-yellow-300 hidden sm:block" },
+        "Home"
+      ),
+      React.createElement(
+        "a",
+        { href: "https://www.pokemon.com/us/animation", target:"_blank", className: "text-white hover:text-yellow-300" },
+        "Animation"
+      ),
+      React.createElement(
+        "a",
+        { href: "https://corporate.pokemon.com/en-us/about/", target:"_blank", className: "text-white hover:text-yellow-300" },
+        "About"
+      )
+    )
+  );
+}
+
 // Card component
 function PokemonCard(props) {
   return React.createElement(
@@ -60,6 +94,7 @@ function App() {
   return React.createElement(
     "div",
     { className: "bg-gradient-to-r from-emerald-300 to-teal-950" },
+    React.createElement(Navbar, null),
     React.createElement(
       "header",
       { className: "p-7 pt-20" },
