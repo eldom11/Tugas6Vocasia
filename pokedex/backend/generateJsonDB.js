@@ -6,7 +6,7 @@ async function generateJsonDB() {
   // dan ketika akses url http://localhost:3000/pokemon akan muncul seluruh data
   // pokemon yang telah kalian parsing dari public api pokemon
   try{
-    const pokemonApiURL = "https://pokeapi.co/api/v2/pokemon/";
+    const pokemonApiURL = "https://pokeapi.co/api/v2/pokemon/?limit=100";
     const getPokemon = await fetch(pokemonApiURL).then((res) => res.json());
     const pokemonArray = [];
 
@@ -36,7 +36,7 @@ async function generateJsonDB() {
     }
     console.log(pokemonArray);
     fs.writeFileSync("db.json", JSON.stringify({pokemon: pokemonArray}, null, 2), "utf-8");
-    
+
   } catch(error) {
     console.error("Gagal Mengambil Data Pokemon",error)
   }
