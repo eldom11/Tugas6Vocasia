@@ -21,6 +21,18 @@ async function generateJsonDB() {
         pokemonEvolutionChain.push(pokemonEvolveTo.species.name);
         pokemonEvolveTo = pokemonEvolveTo.evolves_to[0];
       }
+
+      const pokemon = {
+        id: pokemonDetail.id,
+        name: pokemonDetail.name,
+        types: pokemonDetail.types.map((ty) => ty.type.name),
+        abilities: pokemonDetail.abilities.map((ab) => ab.ability.name),
+        height: pokemonDetail.height,
+        weight: pokemonDetail.weight,
+        cries: pokemonDetail.cries,
+        pokemonEvolutionChain
+      };
+      pokemonArray.push(pokemon);
     }
   } catch(error) {
     console.error(error)
