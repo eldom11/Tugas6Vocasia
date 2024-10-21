@@ -52,15 +52,39 @@ function Navbar() {
 
 // Card component
 function PokemonCard(props) {
+  const typeElements = Array.isArray(props.types)
+    ? props.types.map((type, index) =>
+        React.createElement(
+          "div", 
+          { className: "w-16 h-7 p-1 bg-gray-600 bg-opacity-50 border-current border-2 rounded-lg m-1 hover:scale-125" },
+          React.createElement(
+            "p",
+            { 
+              key: index,
+              className: "text-xs font-medium text-center text-yellow-300" 
+            }, 
+            ` ${type.toUpperCase()}`
+          )
+        )
+      )
+    : React.createElement(
+        "div", 
+        React.createElement(
+          "p",
+          ` ${props.types.toUpperCase()}`
+        )
+      );
+
   return React.createElement(
     "div",
-    { className: "w-44 h-56 bg-teal-200 shadow-lg shadow-syan-500/50 border-current border-2 rounded-md m-1 hover:scale-125" },
+    { className: "w-44 h-56 bg-gradient-to-t from-emerald-400 to-lime-50 shadow-lg shadow-syan-500/50 border-current border-2 rounded-md m-1 hover:scale-125" },
     React.createElement("img", { src: props.image, alt: props.name, className: "h-32 w-32 mx-auto hover:scale-150 hover:-translate-y-6" }),
     React.createElement(
       "div",
-      { className: "h-20 w-40 mx-auto bg-emerald-50 rounded-md p-2" },
-      React.createElement("h2", { className: "text-center text-lg font-semibold text-emerald-950" }, props.name),
-      React.createElement("p", { className: "text-center" }, `Type: ${props.types}`)
+      { className: "h-20 w-40 mx-auto bg-gradient-to-t from-emerald-500 to-teal-950 rounded-md p-2" },
+      React.createElement("h2", { className: "text-center text-lg font-semibold bg-gradient-to-t from-yellow-200 to-yellow-500 text-transparent bg-clip-text" }, props.name.toUpperCase()),
+      React.createElement("hr", { className: "h-1 bg-emerald-950" }),
+      React.createElement("div", {className: "flex w-full"}, typeElements )
     )
   );
 }
@@ -82,7 +106,7 @@ function PokemonList() {
       React.createElement(PokemonCard, {
         key: pokemon.id,
         name: pokemon.name,
-        types: pokemon.types.join("/"),
+        types: pokemon.types,
         image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`,
       })
     )
@@ -100,7 +124,7 @@ function App() {
       { className: "p-7 pt-20" },
       React.createElement(
         "h1",
-        { className: "text-5xl text-center font-bold font-mono text-yellow-300" },
+        { className: "text-5xl text-center font-bold font-mono bg-gradient-to-t from-yellow-200 to-yellow-500 text-transparent bg-clip-text" },
         "Pokedex"
       )
     ),
