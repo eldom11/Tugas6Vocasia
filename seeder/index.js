@@ -25,6 +25,12 @@ async function main() {
     case "check-db-connection":
       await checkConnection();
       break;
+    case "reset-db":
+      break;
+    case "bulk-insert":
+      break;
+    case "get-all":
+      break;
     // TODO: Buat logic fungsionalitas yg belum tersedia di bawah
     default:
       throw Error("command not found");
