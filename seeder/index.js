@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const fs = require("fs");
 require("dotenv").config();
 
 async function main() {
@@ -37,6 +38,8 @@ async function main() {
     case "reset-db":
       break;
     case "bulk-insert":
+      const insertToDB = JSON.parse(fs.readFileSync("./seed.json", "utf-8"));
+      await Model.insertMany(insertToDB);
       break;
     case "get-all":
       break;
