@@ -13,10 +13,11 @@ async function main() {
   /**--------------- Not allowed to be edited - end - --------------------- */
 
   // Connect to MongoDB
-  await mongoose.connect(mongoUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(mongoUri)
+  // , {
+  //   useNewUrlParser: true,
+  //   useUnifiedTopology: true,
+  // });
 
   // Define a schema for the collection
   const schema = new mongoose.Schema({
@@ -36,6 +37,7 @@ async function main() {
       await checkConnection();
       break;
     case "reset-db":
+      await Model.deleteMany();
       break;
     case "bulk-insert":
       const insertToDB = JSON.parse(fs.readFileSync("./seed.json", "utf-8"));
