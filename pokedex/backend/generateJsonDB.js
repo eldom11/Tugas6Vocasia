@@ -34,8 +34,11 @@ async function generateJsonDB() {
       };
       pokemonArray.push(pokemon);
     }
+    console.log(pokemonArray);
+    fs.writeFileSync("db.json", JSON.stringify({pokemon: pokemonArray}, null, 2), "utf-8");
+    
   } catch(error) {
-    console.error(error)
+    console.error("Gagal Mengambil Data Pokemon",error)
   }
 }
 
