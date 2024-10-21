@@ -59,13 +59,13 @@ function PokemonList() {
 function App() {
   return React.createElement(
     "div",
-    { className: "" },
+    { className: "bg-gradient-to-r from-emerald-300 to-teal-950" },
     React.createElement(
       "header",
-      { className: "" },
+      { className: "p-7 pt-20" },
       React.createElement(
         "h1",
-        { className: "text-3xl text-center font-bold underline" },
+        { className: "text-5xl text-center font-bold font-mono text-yellow-300" },
         "Pokedex"
       )
     ),
