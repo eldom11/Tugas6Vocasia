@@ -44,6 +44,8 @@ async function main() {
       await Model.insertMany(insertToDB);
       break;
     case "get-all":
+      const getAll = await Model.find();
+      console.log(getAll);
       break;
     // TODO: Buat logic fungsionalitas yg belum tersedia di bawah
     default:
